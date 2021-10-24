@@ -31,6 +31,11 @@ def print_movie_list(heading, movies):
         human_date = movie_date.strftime("%b %d %Y")
         print(f"{movie[0]} (on {human_date})")
     print("---- \n")
+
+def promp_watch_movie():
+    movie_title=input("Enter the movie you want to watch: ")
+    database.watch_movie(movie_title)
+    
     
 
 while (user_input := input(menu)) != "6":
@@ -43,8 +48,9 @@ while (user_input := input(menu)) != "6":
         movies = database.get_movies()
         print_movie_list("All", movies)
     elif user_input == "4":
-        pass
+        promp_watch_movie()
     elif user_input == "5":
-        pass
+        movies = database.get_watched_movies()
+        print_movie_list("All watched", movies)
     else:
-        print("Invalid input, please try again!")
+        print("Invalid input, please try again.")
