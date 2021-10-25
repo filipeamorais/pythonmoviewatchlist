@@ -20,12 +20,9 @@ DELETE_MOVIE = "DELETE FROM movies WHERE title = ?"
 SELECT_ALL_MOVIES = "SELECT * FROM movies;"
 SELECT_UPCOMING_MOVIES = "SELECT * FROM movies WHERE release_timestamp > ?;"
 SELECT_WATCHED_MOVIES = "SELECT * FROM movies WHERE watched = 1; "
-<<<<<<< HEAD
 SET_MOVIE_WATCHED = "UPDATE movies SET watched = 1 WHERE title = ?"
 INSERT_WATCHLIST = "INSERT INTO watched (watchername, title) VALUES (?, ?)"
-=======
 SET_MOVIE_WATCHED = "UPDATE movies SET watched = 1 WHERE title = ?;"
->>>>>>> 08f2f853669fe60410aa72b5628594105e88d0b1
 
 connection = sqlite3.connect("data.db")
 
@@ -52,13 +49,9 @@ def get_movies(upcoming=False):
 def watch_movie(username, title):
     with connection:
         cursor = connection.cursor()
-<<<<<<< HEAD
         cursor.execute(DELETE_MOVIE, (title,))
         cursor.execute(INSERT_WATCHLIST, (username, title))
         cursor.execute(SET_MOVIE_WATCHED, (title))
-=======
-        cursor.execute(SET_MOVIE_WATCHED, (title,))
->>>>>>> 08f2f853669fe60410aa72b5628594105e88d0b1
     pass
 
 def get_watched_movies():
