@@ -4,21 +4,21 @@ import sqlite3
 from sqlite3.dbapi2 import Cursor
 
 
-CREATE_MOVIES_TABLE = """CREATE TABLE IF NOT EXISTS movies(
+CREATE_MOVIES_TABLE = """CREATE TABLE IF NOT EXISTS movies (
     id INTEGER PRIMARY KEY,
     title TEXT,
-    release_timestamp REAL,
-    );"""
+    release_timestamp REAL
+);"""
 
 CREATE_USERS_TABLE = """CREATE TABLE IF NOT EXISTS users (
     username TEXT PRIMARY KEY
 );"""
 
-CREATE_WATCHED_TABLE = """CREATE TABLE IF NOT EXISTS watched(
+CREATE_WATCHED_TABLE = """CREATE TABLE IF NOT EXISTS watched (
     user_username TEXT,
     movie_id INTEGER,
-    FOREIGN KEY(user_username) REFERENCES users(username)
-    FOREIGN KEY(movie_id) REFERENCES
+    FOREIGN KEY(user_username) REFERENCES users(username),
+    FOREIGN KEY(movie_id) REFERENCES movies(id)
 );"""
 
 INSERT_MOVIES = "INSERT INTO movies (title, release_timestamp) VALUES (?, ?, 0);"
